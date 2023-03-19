@@ -1,0 +1,17 @@
+
+How to install ESXi:
+
+
+1- Enable SSH on ESXi
+2- copy patch file on ESXi
+
+* patch file on datastore1 **ESXi670-201903001.zip patch file name
+3- esxcli software vib update -d /vmfs/volumes/datastore1/ESXi670-201903001.zip
+4- waith for install patch, after install patch maby need to reboot ESXi Host
+
+
+after install patch file,  ESXi build number changed to Build number patch file
+
+
+
+How to Disable/Enable the SLP Service on VMware ESXi (76372)
