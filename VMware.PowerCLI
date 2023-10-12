@@ -1,0 +1,23 @@
+#Install PowerCLI on PowerSell
+Install-Module -Name VMware.PowerCLI -RequiredVersion 13.0.0.20829139 
+
+--------------------------------------------
+Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Scope Session -Confirm:$false
+
+Connect-VIServer -Server IP_ADDRESS -Protocol https -User USER -Password PASS
+
+
+#Obtain system information
+Get-VMHost | Format-List
+#Get a list of VMs and status
+Get-VM | Format-List
+#Get detailed information on a specific VM
+Get-VMGuest GUEST_NAME | Format-List
+#View Datastore information
+Get-HardDisk -Datastore DATASTORE_NAME
+#Start a specified VM
+Start-VM -VM VM_NAME -Confirm
+#Restart a specified VM’s OS
+Restart-VMGuest -Guest GUEST_NAME -Confirm
+#Restart a specified host server
+Restart-VMHost -VMHost HOSTNAME -Force
