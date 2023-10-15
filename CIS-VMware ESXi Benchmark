@@ -1,0 +1,29 @@
+8.1.2 Ensure only one remote console connection is permitted to a VM at any time (Automated)
+
+  Get-VM | Get-AdvancedSetting -Name "RemoteDisplay.maxConnections" | Select Entity, Name, Value
+
+
+    Get-VM | New-AdvancedSetting -Name "RemoteDisplay.maxConnections" -value 3
+  OR
+    Get-VM | New-AdvancedSetting -Name "RemoteDisplay.maxConnections" -value 3 -Force
+
+
+
+
+8.7.1 (L2) Ensure VIX messages from the VM are disabled (not parameters VM Config - Turn off the VM and add parameters )  CIS_VMware_ESXi_7_0_Benchmark_v1_1_0 Jun 3, 2021 REMOVE - Ensure VIX messages from the VM are disabled setting is now invalid. (Ticket 12861) در تبیان بررسی شود
+    Get-VM | New-AdvancedSetting -Name "isolation.tools.vixMessage.disable" -value $true
+
+    Get-VM | Get-AdvancedSetting -Name "isolation.tools.vixMessage.disable" | Select Entity, Name, Value
+
+
+
+
+8.7.4 (L1) Ensure VM log file size is limited (not parameters VM Config - Turn off the VM and add parameters ) (default for ESXi is to rotate 10 files with a size of 10240 KB each)
+
+
+  /etc/vmware/config     
+	  		vmx.log.keepOld = "10"
+        vmx.log.rotateSize = "1024000"
+
+
+  Get-VM | New-AdvancedSetting -Name "log.rotateSize" -value "1024000"  
