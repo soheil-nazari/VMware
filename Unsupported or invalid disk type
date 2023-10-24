@@ -1,0 +1,11 @@
+#     Connect to the ESXi host via SSH
+
+
+cd vmfs
+cd volumes
+cd datastore1
+vmkfstools -i xxxxxx.vmdk xxxx-New.vmdk
+
+
+#   Detach the currently attached VMDK from the virtual machine
+#   Reattach the newly formatted VMDK
